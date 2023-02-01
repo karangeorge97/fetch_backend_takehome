@@ -35,18 +35,22 @@ public class User {
     }
 
 
-    public void spendPoints(int points) {
+    public int spendPoints(int pointsToSpend) {
+        int remainingPoints = pointsToSpend;
         for (Transaction transaction : transactions) {
-            if (transaction.getPoints() <= points) {
-                points -= transaction.getPoints();
-                payerMap.put(transaction.getPayer(), payerMap.get(transaction.getPayer()) - transaction.getPoints());
-                if (points == 0) {
-                    return ;
-                }
-            } else {
-                payerMap.put(transaction.getPayer(), payerMap.get(transaction.getPayer()) - points);
-                return ;
+            if (remainingPoints <= 0) {
+                break;
             }
+
+            String payer = transaction.getPayer();
+            int currentBalance = payerMap.get(payer);
+            int points = Math.min(transaction.getPoints(), remainingPoints);
+            if (currentBalance - points < 0) {
+                points = currentBalance;
+            }
+            remainingPoints -= points;
+            payerMap.put(payer, currentBalance - points);
         }
+        return remainingPoints;
     }
 }

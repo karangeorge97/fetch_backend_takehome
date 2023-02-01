@@ -13,10 +13,14 @@ public class Run {
         CSVReader csvReader = new CSVReader();
         List<Transaction> transactions = csvReader.readTransactionsFromCSV();
         User user = new User(new HashMap<String,Integer>(),transactions);
-        user.spendPoints(5000);
-        for(Map.Entry<String,Integer> entry : user.getPayerMap().entrySet())
+        if(user.spendPoints(5000)>0)
         {
-            System.out.println("Payer :"+entry.getKey() + " Points: "+ entry.getValue());
+            System.out.println("Unable to spend all the points as per specifications");
+        }
+        else {
+            for (Map.Entry<String, Integer> entry : user.getPayerMap().entrySet()) {
+                System.out.println("Payer :" + entry.getKey() + " Points: " + entry.getValue());
+            }
         }
 
     }
