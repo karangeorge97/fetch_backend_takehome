@@ -1,9 +1,20 @@
 # Backend Take home assignment for fetch 
 
+Technologies used
+1. Java
+2. Maven -> Packaging into an executable jar 
 
-Our users have points in their accounts. Users only see a single balance in their accounts. But for reporting purposes, we actually track their points per payer. In our system, each transaction record contains: payer (string), points (integer), timestamp (date).
-For earning points, it is easy to assign a payer. We know which actions earned the points. And thus, which partner should be paying for the points.
-When a user spends points, they don't know or care which payer the points come from. But, our accounting team does care how the points are spent. There are two rules for determining what points to "spend" first:
-We want the oldest points to be spent first (oldest based on transaction timestamp, not the order they’re received)
-We want no payer's points to go negative.
+# Steps to run
+1. The program is packaged using maven as a build tool
+2. Install maven using https://maven.apache.org/install.html
+3. Once Maven is configured on command line run the following commands in the root directory of the project 
+4. mvn clean
+5. mvn install 
+6. java -jar target/app-1.0-SNAPSHOT-jar-with-dependencies.jar <Points to spend>
+
+
+# Steps to change test with a different set of transactions
+1. Change the transactions.csv file located in src/main/resources
+2. Repeat steps 4,5,6 from previous set of steps 
+
 

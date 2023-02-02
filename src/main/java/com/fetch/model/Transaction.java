@@ -1,4 +1,4 @@
-package model;
+package com.fetch.model;
 
 import java.util.Date;
 

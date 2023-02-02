@@ -1,9 +1,10 @@
+package com.fetch;
 
-import model.Transaction;
-import model.User;
-import utils.CSVReader;
+import com.fetch.model.Transaction;
+import com.fetch.model.User;
+import com.fetch.utils.CSVReader;
 
-
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,10 @@ import java.util.Map;
 public class Run {
     public static void main(String[] args) {
         CSVReader csvReader = new CSVReader();
-        List<Transaction> transactions = csvReader.readTransactionsFromCSV();
+        List<Transaction> transactions = null;
+        transactions = csvReader.readTransactionsFromCSV();
         User user = new User(new HashMap<String,Integer>(),transactions);
-        if(user.spendPoints(5000)>0)
+        if(user.spendPoints(Integer.parseInt(args[0]))>0)
         {
             System.out.println("Unable to spend all the points as per specifications");
         }

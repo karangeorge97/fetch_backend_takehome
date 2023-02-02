@@ -1,22 +1,21 @@
-package utils;
+package com.fetch.utils;
 
 
 
-import model.Transaction;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+
+import com.fetch.model.Transaction;
+
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CSVReader {
-    private static final String CSV_FILE_PATH = "/transactions.csv";
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private static final String CSV_FILE_PATH = "/transactions.csv";
 
-
-    public List<Transaction> readTransactionsFromCSV() {
+    public List<Transaction> readTransactionsFromCSV()  {
         List<Transaction> transactions = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(CSV_FILE_PATH)))) {
             String line;
