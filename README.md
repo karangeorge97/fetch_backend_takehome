@@ -10,7 +10,7 @@ Technologies used
 3. Once Maven is configured on command line run the following commands in the root directory of the project 
 4. mvn clean
 5. mvn install 
-6. java -jar target/app-1.0-SNAPSHOT-jar-with-dependencies.jar <Points to spend>
+6. java -jar target/app-1.0-jar-with-dependencies.jar <Points to spend>
 
 
 # Steps to change test with a different set of transactions
